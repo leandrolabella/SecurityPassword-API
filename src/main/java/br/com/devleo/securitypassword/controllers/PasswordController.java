@@ -1,6 +1,7 @@
 package br.com.devleo.securitypassword.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +19,16 @@ public class PasswordController {
     private PasswordService passwordService;
 
     @GetMapping
-    public ResponseEntity<String> getNewPassword(@RequestParam("uppercase") boolean uppercase,
+    public ResponseEntity<Password> getNewPassword(@RequestParam("uppercase") boolean uppercase,
             @RequestParam("lowercase") boolean lowercase,
             @RequestParam("symbols") boolean symbols,
             @RequestParam("numbers") boolean numbers,
             @RequestParam("size") int size) {
         Password password = passwordService.newPassword(uppercase, lowercase, symbols, numbers, size);
         if (password == null) {
-            return ResponseEntity.badRequest().body("Error to generate password, please try again.");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok().body(password.getPassword());
+        return new ResponseEntity<>(password, HttpStatus.OK);
     }
 
 }
