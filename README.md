@@ -6,7 +6,7 @@ Projeto de uma pequena interface que gera senhas e testa se uma senha é forte. 
 
 <h2>API</h2>
 <p>A API é responsável por gerar novas senhas para o usuário com base nas opções que ele escolher no site (letras maiúsculas, minúsculas, símbolos e/ou números).</p>
-<p>Possui um banco de dados que salva todas as senhas já geradas, para verificar se uma senha já foi utilizada antes de passar para o usuário.</p>
+<p>Possui um banco de dados que salva todas as senhas já geradas, para verificar se uma senha já foi utilizada antes de enviar para o usuário.</p>
 
 <h2>Tecnologias e ferramentas</h2>
 <p>- Java 17</p>
